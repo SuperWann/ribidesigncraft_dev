@@ -22,6 +22,8 @@ class ProductForm
                     ->required(),
                 Textarea::make('description')
                     ->label('Deskripsi')
+                    ->required()
+                    ->maxLength(715)
                     ->columnSpanFull(),
                 Repeater::make('images')
                     ->relationship('images') 
@@ -49,6 +51,7 @@ class ProductForm
                     ->createOptionForm([
                         TextInput::make('name')
                             ->label('Nama kategori')
+                            ->maxLength(15)
                             ->required(),
                     ])
                     ->editOptionForm([
