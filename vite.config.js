@@ -14,9 +14,11 @@ export default defineConfig({
         tailwindcss(),
     ],
     server: {
+        host: '0.0.0.0', 
         watch: {
             ignored: ['**/storage/framework/views/**'],
         },
+        allowedHosts: ['ribidesigncraft-dev.onrender.com'], 
     },
     resolve: {
         alias: {
@@ -24,6 +26,8 @@ export default defineConfig({
         },
     },
     preview: {
-        allowedHosts: 'ribidesigncraft-dev.onrender.com',
+        host: '0.0.0.0', 
+        port: process.env.PORT || 5173, 
+        allowedHosts: ['ribidesigncraft-dev.onrender.com', '.onrender.com'], 
     },
 });
