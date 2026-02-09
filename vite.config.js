@@ -23,4 +23,7 @@ export default defineConfig({
             '@': path.resolve(__dirname, 'resources/js'),
         },
     },
+    preview: {
+        allowedHosts: 'ribidesigncraft-dev.onrender.com',
+    },
 });
