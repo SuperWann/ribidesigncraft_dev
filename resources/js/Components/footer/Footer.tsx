@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
                                 Ribi Design & Craft
                             </h4>
                             <p className="leading-relaxed text-justify">Mengubah Imajinasi Menjadi Karya Nyata.
-Kami menghadirkan sentuhan personal lewat karya handmade yang unik dan bermakna. Dengan bahan premium dan dedikasi penuh, kami menciptakan produk eksklusif yang estetik karena bagi kami, kepuasan Anda adalah prestasi tertinggi kami.</p>
+                                Kami menghadirkan sentuhan personal lewat karya handmade yang unik dan bermakna. Dengan bahan premium dan dedikasi penuh, kami menciptakan produk eksklusif yang estetik karena bagi kami, kepuasan Anda adalah prioritas kami.</p>
                         </div>
 
                         <div>

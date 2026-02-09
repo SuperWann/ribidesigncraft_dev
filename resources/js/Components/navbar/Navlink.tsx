@@ -16,7 +16,8 @@ interface NavLink {
 const links: NavLink[] = [
     { href: "/", translationKey: "Beranda" },
     { href: "/belanja", translationKey: "Belanja" },
-    { href: "/testimoni", translationKey: "Testimoni" },
+    // { href: "/gallery", translationKey: "Galeri" },
+    { href: "/about", translationKey: "Tentang" },
 ];
 
 export function NavigationLinks({ isMobile = false, onLinkClick, url }: NavigationLinksProps) {

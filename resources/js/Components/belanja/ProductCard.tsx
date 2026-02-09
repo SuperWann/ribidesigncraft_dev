@@ -1,5 +1,5 @@
 import { router } from '@inertiajs/react';
-import { Star, Heart } from 'lucide-react';
+import { Star, Heart, ImageOff } from 'lucide-react';
 
 interface Product {
     product_id: number;
@@ -56,7 +56,7 @@ export default function ProductCard({ product, onAddToCart, onBuyNow }: ProductC
                     />
                 ) : (
                     <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                        <span className="text-gray-400 text-sm font-medium">No Image</span>
+                        <ImageOff className="text-gray-400 text-sm font-medium w-12 h-12" />
                     </div>
                 )}
             </div>

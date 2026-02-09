@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class ProductImage extends Model
 {
@@ -22,6 +23,26 @@ class ProductImage extends Model
     protected $casts = [
         'created_at' => 'datetime'
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::updating(function ($image) {
+            if ($image->isDirty('image')) {
+                $old = $image->getOriginal('image');
+                if ($old && Storage::disk('public')->exists($old)) {
+                    Storage::disk('public')->delete($old);
+                }
+            }
+        });
+
+        static::deleting(function ($image) {
+            if ($image->image && Storage::disk('public')->exists($image->image)) {
+                Storage::disk('public')->delete($image->image);
+            }
+        });
+    }
 
     // RELATIONSHIPS
     public function product()

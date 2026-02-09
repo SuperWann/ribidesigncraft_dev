@@ -49,9 +49,9 @@ export default function Navbar() {
                             aria-label="Toggle menu"
                         >
                             {isMenuOpen ? (
-                                <X className="w-6 h-6" />
+                                <X className="w-6 h-6 cursor-pointer" />
                             ) : (
-                                <Menu className="w-6 h-6" />
+                                <Menu className="w-6 h-6 cursor-pointer" />
                             )}
                         </button>
                     </div>
