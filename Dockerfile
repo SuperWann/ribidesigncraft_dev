@@ -7,7 +7,7 @@ WORKDIR /var/www/html
 ENV COMPOSER_MEMORY_LIMIT=-1
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
-# Install system dependencies + supervisor
+# Install system dependencies (NO NGINX!)
 RUN apt-get update && apt-get install -y \
     git \
     curl \
@@ -19,7 +19,6 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     supervisor \
-    nginx \
     && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
     && apt-get install -y nodejs \
     && apt-get clean \
@@ -38,14 +37,11 @@ RUN docker-php-ext-install \
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Copy seluruh aplikasi
+# Copy aplikasi
 COPY . .
 
-# Beri izin execute untuk build.sh
-RUN chmod +x build.sh
-
-# Jalankan build script
-RUN ./build.sh
+# Build script
+RUN chmod +x build.sh && ./build.sh
 
 # Create necessary directories
 RUN mkdir -p storage/framework/sessions \
@@ -56,24 +52,14 @@ RUN mkdir -p storage/framework/sessions \
     /var/log/supervisor
 
 # Set permissions
-RUN chmod -R 775 storage \
-    && chmod -R 775 bootstrap/cache \
-    && chown -R www-data:www-data storage \
-    && chown -R www-data:www-data bootstrap/cache
+RUN chmod -R 775 storage bootstrap/cache
 
-# Buat konfigurasi supervisor untuk multiple services
+# Buat konfigurasi supervisor SEDERHANA (hanya untuk serve)
 RUN mkdir -p /etc/supervisor/conf.d/
-
-# Copy konfigurasi supervisor
 COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-# Copy nginx configuration (optional - kalau mau pake nginx)
-COPY docker/nginx.conf /etc/nginx/nginx.conf
-
-# Expose ports
+# Expose port
 EXPOSE 8000
-EXPOSE 80
-EXPOSE 443
 
 # Jalankan supervisor
 CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
