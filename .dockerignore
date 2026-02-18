@@ -3,6 +3,11 @@ vendor
 .env
 .git
 .gitignore
+.gitattributes
+.dockerignore
+Dockerfile
+docker-compose.yml
+README.md
 storage/logs/*
 storage/framework/cache/*
 storage/framework/sessions/*
@@ -10,3 +15,8 @@ storage/framework/views/*
 bootstrap/cache/*
 public/hot
 public/storage
+tests/
+phpunit.xml
+.editorconfig
+.styleci.yml
+phpcs.xml

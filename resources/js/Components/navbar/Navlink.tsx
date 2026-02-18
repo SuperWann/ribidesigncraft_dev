@@ -17,7 +17,7 @@ const links: NavLink[] = [
     { href: "/", translationKey: "Beranda" },
     { href: "/belanja", translationKey: "Belanja" },
     // { href: "/gallery", translationKey: "Galeri" },
-    { href: "/about", translationKey: "Tentang" },
+    { href: "/tentang", translationKey: "Tentang" },
 ];
 
 export function NavigationLinks({ isMobile = false, onLinkClick, url }: NavigationLinksProps) {

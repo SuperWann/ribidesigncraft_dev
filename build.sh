@@ -1,17 +1,18 @@
 #!/usr/bin/env bash
 set -e
 
-# Install PHP dependencies
+echo "📦 Installing PHP dependencies..."
 composer install --no-dev --optimize-autoloader
 
-# Install Node dependencies and build assets
+echo "📦 Installing Node dependencies..."
 npm ci
+
+echo "🔨 Building assets..."
 npm run build
 
-# Cache Laravel configuration
+echo "🗄️ Caching Laravel configuration..."
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache
 
-# Run migrations
-php artisan migrate --force
+echo "✅ Build completed!"

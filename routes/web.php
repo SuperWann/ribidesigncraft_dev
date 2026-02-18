@@ -10,11 +10,11 @@ Route::get('/', [HomeController::class, 'index'])->name('beranda');
 Route::get('/belanja', [ProductController::class, 'index'])->name('belanja');
 Route::get('/belanja/{product}', [ProductController::class, 'show'])->name('belanja.show');
 
-Route::get('/gallery', function () {
+Route::get('/galeri', function () {
     return Inertia::render('Gallery/Index');
 })->name('gallery');
 
-Route::get('/about', function () {
+Route::get('/tentang', function () {
     return Inertia::render('About/Index');
 })->name('about');
 
